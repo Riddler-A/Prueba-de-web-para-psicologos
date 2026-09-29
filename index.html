@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Psicóloga clínica en CDMX. Terapia individual, de pareja, duelo, adolescentes y en línea. Sitio de muestra de Primsa.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%278%27 fill=%27%23FAF8F4%27/%3E%3Ctext x=%2716%27 y=%2724%27 font-size=%2722%27 text-anchor=%27middle%27 font-family=%27Georgia%27 fill=%27%23A85C32%27%3E%CE%A8%3C/text%3E%3C/svg%3E">
+<title>Consultorio Mariana Ríos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Inter:wght@400;500;600&display=swap">
+<style>
+/* Layout (marca Primsa): hero y footer en banda oscura a todo lo ancho; secciones en blanco hueso alternando con gris cálido */
+:root {
+  --bg: #FAF8F4;          /* blanco hueso */
+  --surface: #F2F0EA;     /* gris 3: tarjetas y secciones alternas */
+  --ink: #161513;         /* tinta */
+  --muted: #6B6B6B;       /* gris 1 */
+  --line: #E4E1DA;        /* gris 2 */
+  --gold: #C49D3A;
+  --gold-dark: #8F7128;
+  --terra: #A85C32;
+  --terra-soft: #F4E7DD;
+  --dark: #161513;        /* banda oscura (hero, footer) */
+  --on-dark: #FAF8F4;
+  --on-dark-muted: #B8B2A6;
+  --on-accent: #FAF8F4;
+  --accent: var(--gold-dark);   /* texto/acento legible sobre fondo claro */
+  --display: "Fraunces", Georgia, "Times New Roman", serif;
+  --body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+/* Diseño de un solo tema: siempre claro, aunque el dispositivo esté en modo oscuro */
+:root { color-scheme: light; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--body); font-size: 17px; line-height: 1.6;
+  padding-inline: 20px; padding-block: 0;
+}
+.wrap { max-width: 1060px; margin-inline: auto; }
+h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 1.1; text-wrap: balance; margin: 0; font-variation-settings: "SOFT" 100; }
+h1 { font-size: clamp(2.5rem, 5.6vw, 4.2rem); font-weight: 350; letter-spacing: -.01em; }
+h2 { font-size: clamp(1.9rem, 3.8vw, 2.7rem); font-weight: 350; }
+h3 { font-size: 1.4rem; font-weight: 450; }
+p { margin: 0; }
+em { font-style: italic; color: var(--accent); }
+a { color: var(--accent); }
+.eyebrow { font-size: .76rem; letter-spacing: .14em; text-transform: uppercase; color: var(--terra); font-weight: 600; }
+.btn {
+  display: inline-flex; align-items: center; gap: .5rem; border: 0; cursor: pointer;
+  background: var(--terra); color: var(--on-accent); font: 600 .98rem var(--body);
+  padding: .9rem 1.5rem; border-radius: 999px; text-decoration: none; transition: background .2s;
+}
+.btn:hover { background: var(--gold-dark); }
+.btn.gold { background: var(--gold); color: var(--dark); }
+.btn.gold:hover { background: var(--gold-dark); color: var(--on-accent); }
+.btn.ghost { background: transparent; color: var(--ink); border: 1px solid var(--gold); }
+.btn.ghost:hover { background: color-mix(in srgb, var(--gold) 18%, transparent); }
+.btn:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, .slot:focus-visible, summary:focus-visible {
+  outline: 2px solid var(--gold); outline-offset: 3px;
+}
+
+.demo-banner {
+  margin-inline: -20px; padding: .5rem 20px; text-align: center; font-size: .82rem;
+  background: var(--terra-soft); color: var(--ink);
+}
+
+.bleed { box-shadow: 0 0 0 100vmax var(--band); clip-path: inset(0 -100vmax); background: var(--band); }
+.dark-band { --band: var(--bg); color: var(--ink); border-bottom: 1px solid var(--line); }
+nav { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: 1.4rem; flex-wrap: wrap; }
+.logo { font-family: var(--display); font-size: 1.5rem; text-decoration: none; color: var(--ink); }
+footer .logo { color: var(--on-dark); }
+.logo span { color: var(--terra); font-family: var(--body); font-size: .72rem; display: block; letter-spacing: .16em; }
+.navlinks { display: flex; gap: 1.6rem; flex-wrap: wrap; font-size: .93rem; }
+.navlinks a { color: var(--muted); text-decoration: none; }
+.navlinks a:hover { color: var(--terra); }
+
+.hero { display: grid; grid-template-columns: 1.25fr 1fr; gap: 3rem; align-items: center; padding-block: 3rem 5rem; }
+.hero > div { min-width: 0; display: grid; gap: 1.5rem; }
+.hero .lede { font-size: 1.1rem; color: var(--muted); max-width: 36ch; }
+.hero .actions { display: flex; gap: .8rem; flex-wrap: wrap; }
+.portrait {
+  position: relative; aspect-ratio: 4 / 5; max-width: 100%; border-radius: 220px 220px 28px 28px;
+  background:
+    radial-gradient(circle at 30% 25%, color-mix(in srgb, #C49D3A 70%, transparent), transparent 60%),
+    radial-gradient(circle at 75% 80%, color-mix(in srgb, #A85C32 80%, transparent), transparent 65%),
+    #2A241C;
+  overflow: hidden; display: grid; place-items: center;
+}
+.portrait img, .photo { width: 100%; height: 100%; object-fit: cover; display: block; }
+.portrait img { position: absolute; inset: 0; object-position: center 30%; }
+.photo { border-radius: 24px; max-width: 100%; }
+.portrait .tag {
+  position: absolute; left: 16px; right: 16px; bottom: 16px; background: #FAF8F4; color: #161513;
+  border-radius: 18px; padding: .8rem 1rem; font-size: .88rem; display: flex; gap: .7rem; align-items: center;
+}
+.dot { width: 10px; height: 10px; border-radius: 50%; background: #C49D3A; flex: none; box-shadow: 0 0 0 4px color-mix(in srgb, #C49D3A 30%, transparent); }
+
+section { padding-block: 4.5rem; }
+section.alt { --band: var(--surface); }
+section.alt .service, section.alt .week { background: var(--bg); }
+.head { display: grid; gap: .8rem; margin-bottom: 2.5rem; max-width: 40rem; }
+
+.about { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+.about > * { min-width: 0; }
+.about-side { display: grid; gap: 2rem; align-content: start; }
+.about-side .photo { aspect-ratio: 5 / 4; object-position: center 45%; }
+.about p + p { margin-top: 1rem; }
+.creds { list-style: none; padding: 0; margin: 0; display: grid; gap: 0; }
+.creds li { display: grid; grid-template-columns: 5.5rem 1fr; gap: 1rem; padding-block: .9rem; border-bottom: 1px solid var(--line); font-size: .95rem; }
+.creds li b { font-weight: 600; color: var(--gold-dark); font-variant-numeric: tabular-nums; }
+
+.services { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
+.service { background: var(--surface); border-radius: 24px; padding: 1.8rem; border: 1px solid var(--line); display: grid; gap: .7rem; align-content: start; }
+.service .meta { font-size: .85rem; color: var(--muted); display: flex; gap: 1rem; flex-wrap: wrap; font-variant-numeric: tabular-nums; }
+.service .meta strong { color: var(--ink); font-weight: 600; }
+.chip { background: var(--terra-soft); color: var(--terra); border-radius: 999px; padding: .2rem .7rem; font-weight: 600; }
+
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: center; }
+.split > * { min-width: 0; }
+.split .photo { aspect-ratio: 4 / 5; }
+.split .head { margin-bottom: 2rem; }
+.checks { list-style: none; padding: 0; margin: 1.6rem 0 2rem; display: grid; gap: .8rem; }
+.checks li { display: grid; grid-template-columns: 1.4rem 1fr; gap: .6rem; }
+.cta-row { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; font-size: .9rem; }
+.checks li::before { content: "✓"; color: var(--terra); font-weight: 600; }
+.steps { list-style: none; padding: 0; margin: 0; display: grid; gap: 1.8rem; counter-reset: s; }
+.steps li { counter-increment: s; display: grid; gap: .5rem; align-content: start; }
+.steps li::before { content: "Paso " counter(s); font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--terra); font-weight: 600; }
+.steps h3 { font-style: italic; }
+.steps p { color: var(--muted); }
+
+.booking { display: grid; grid-template-columns: 1fr 1.1fr; gap: 2.5rem; align-items: start; }
+.booking > * { min-width: 0; }
+.week { background: var(--surface); border-radius: 20px; padding: 1.4rem; overflow-x: auto; }
+.week-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: .45rem; }
+.day { display: grid; gap: .45rem; align-content: start; min-width: 0; }
+.day-name { font-size: .8rem; font-weight: 600; text-align: center; color: var(--muted); padding-bottom: .3rem; }
+.day-name small { display: block; font-weight: 400; font-variant-numeric: tabular-nums; }
+.slot {
+  font: 500 .85rem var(--body); font-variant-numeric: tabular-nums; padding: .5rem 0; min-width: 0; border-radius: 10px; cursor: pointer;
+  border: 1px solid var(--line); background: transparent; color: var(--ink);
+}
+.slot:hover { border-color: var(--gold); }
+.slot[disabled] { text-decoration: line-through; color: var(--muted); opacity: .5; cursor: not-allowed; }
+.slot[aria-pressed="true"] { background: var(--terra); color: var(--on-accent); border-color: var(--terra); }
+.week-note { font-size: .82rem; color: var(--muted); margin-top: 1rem; }
+
+form { display: grid; gap: 1rem; }
+.field { display: grid; gap: .35rem; }
+label { font-size: .88rem; font-weight: 500; }
+input, select, textarea {
+  font: 1rem var(--body); color: var(--ink); background: var(--bg); border: 1px solid var(--line);
+  border-radius: 14px; padding: .75rem .9rem; width: 100%;
+}
+textarea { min-height: 100px; resize: vertical; }
+.chosen { font-size: .95rem; padding: .8rem 1rem; border-radius: 14px; background: var(--terra-soft); }
+.confirm { padding: 1rem 1.2rem; border-radius: 14px; background: var(--terra-soft); font-size: .95rem; }
+
+details { border-bottom: 1px solid var(--line); padding-block: 1.1rem; }
+summary { cursor: pointer; font-weight: 600; list-style: none; display: flex; justify-content: space-between; gap: 1rem; }
+summary::after { content: "+"; color: var(--gold); font-size: 1.3rem; line-height: 1; }
+details[open] summary::after { content: "–"; }
+details p { color: var(--muted); margin-top: .7rem; max-width: 60ch; }
+
+footer { --band: var(--dark); padding-block: 3rem; display: grid; gap: 1.5rem; font-size: .9rem; color: var(--on-dark-muted); }
+footer .logo { font-size: 1.3rem; }
+.crisis { border: 1px solid color-mix(in srgb, var(--gold) 45%, transparent); border-radius: 18px; padding: 1rem 1.2rem; color: var(--on-dark); }
+.crisis strong { color: var(--gold); }
+.foot-row { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+
+@media (max-width: 800px) {
+  .hero, .about, .booking, .split { grid-template-columns: 1fr; gap: 2rem; }
+  .split .photo { aspect-ratio: 4 / 3; }
+  .split.reverse > .photo { order: -1; }
+  .week { padding: 1rem; }
+  .hero { padding-block: 1.5rem 3rem; }
+  .portrait { max-width: 340px; }
+  .services, .steps { grid-template-columns: 1fr; }
+  .navlinks { display: none; }
+  section { padding-block: 3.2rem; }
+}
+/* Base */
+body { margin: 0; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<div class="demo-banner">Sitio de muestra · El nombre, datos y horarios son ficticios</div>
+
+<div class="wrap">
+  <div class="dark-band bleed">
+  <nav>
+    <a class="logo" href="#inicio">Mariana Ríos<span>PSICOLOGÍA CLÍNICA</span></a>
+    <div class="navlinks">
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#agenda">Agenda</a>
+      <a href="#preguntas">Preguntas</a>
+    </div>
+    <a class="btn gold" href="#agenda">Agendar cita</a>
+  </nav>
+
+  <header class="hero" id="inicio">
+    <div>
+      <p class="eyebrow">Terapia presencial y en línea</p>
+      <h1>Un espacio seguro para <em>entenderte</em> y volver a sentirte bien.</h1>
+      <p class="lede">Acompaño a adultos y parejas con ansiedad, duelo, estrés y cambios de vida, con terapia cognitivo-conductual basada en evidencia.</p>
+      <div class="actions">
+        <a class="btn" href="#agenda">Reservar primera sesión</a>
+        <a class="btn ghost" href="#servicios">Ver servicios</a>
+      </div>
+    </div>
+    <div class="portrait">
+      <img src="img/psicologa.jpg" alt="Retrato de la psicóloga Mariana Ríos">
+      <div class="tag"><span class="dot"></span><span>Aceptando nuevos pacientes esta semana</span></div>
+    </div>
+  </header>
+  </div>
+
+  <section id="sobre-mi">
+    <div class="about">
+      <div class="about-side">
+        <div class="head" style="margin:0">
+          <p class="eyebrow">Sobre mí</p>
+          <h2>Escucho sin juicios y trabajamos con objetivos claros.</h2>
+        </div>
+        <img class="photo" src="img/consultorio.jpg" alt="Consultorio con diván, plantas y luz cálida">
+      </div>
+      <div>
+        <p>Soy psicóloga clínica con 9 años de experiencia. Mi trabajo combina la terapia cognitivo-conductual con herramientas de mindfulness y aceptación, adaptadas a lo que tú necesitas.</p>
+        <p>En las primeras sesiones definimos juntos qué quieres cambiar y cómo vamos a medir el avance. Así la terapia tiene rumbo y sabes en todo momento en qué punto estás.</p>
+        <ul class="creds" style="margin-top:1.6rem">
+          <li><b>Formación</b><span>Licenciatura en Psicología · Maestría en Psicología Clínica</span></li>
+          <li><b>Enfoque</b><span>Cognitivo-conductual (TCC) y terapia de aceptación y compromiso (ACT)</span></li>
+          <li><b>Registro</b><span>Cédula profesional 0000000 (ejemplo)</span></li>
+          <li><b>Idiomas</b><span>Español e inglés</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicios" class="alt bleed">
+    <div class="head">
+      <p class="eyebrow">Servicios</p>
+      <h2>¿En qué te puedo acompañar?</h2>
+    </div>
+    <div class="services">
+      <article class="service">
+        <h3>Terapia individual</h3>
+        <p>Ansiedad, ataques de pánico, estado de ánimo bajo, autoestima y manejo del estrés.</p>
+        <div class="meta"><span><strong>50 min</strong> por sesión</span><span class="chip">$800 MXN</span></div>
+      </article>
+      <article class="service">
+        <h3>Terapia de pareja</h3>
+        <p>Comunicación, conflictos recurrentes, confianza y decisiones importantes en pareja.</p>
+        <div class="meta"><span><strong>75 min</strong> por sesión</span><span class="chip">$1,100 MXN</span></div>
+      </article>
+      <article class="service">
+        <h3>Duelo y pérdidas</h3>
+        <p>Acompañamiento tras la muerte de un ser querido, una separación o la pérdida de un empleo.</p>
+        <div class="meta"><span><strong>50 min</strong> por sesión</span><span class="chip">$800 MXN</span></div>
+      </article>
+      <article class="service">
+        <h3>Adolescentes</h3>
+        <p>Jóvenes de 15 a 18 años con ansiedad, presión escolar o dificultades en casa. Incluye una sesión de orientación para madres y padres.</p>
+        <div class="meta"><span><strong>50 min</strong> por sesión</span><span class="chip">$850 MXN</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="en-linea">
+    <div class="split">
+      <div>
+        <div class="head">
+          <p class="eyebrow">Terapia en línea</p>
+          <h2>La misma cercanía, <em>desde donde estés</em>.</h2>
+        </div>
+        <p>Si vives en otra ciudad o tu agenda es complicada, podemos trabajar por videollamada con la misma calidad y confidencialidad que en el consultorio.</p>
+        <ul class="checks">
+          <li>Enlace privado de Google Meet para cada sesión</li>
+          <li>Horarios de 7:00 a 21:00, también en sábado</li>
+          <li>Material de trabajo y ejercicios por correo</li>
+        </ul>
+        <div class="cta-row"><span class="chip">$750 MXN · 50 min</span><a class="btn" href="#agenda">Agendar en línea</a></div>
+      </div>
+      <img class="photo" src="img/sesion-en-linea.jpg" alt="Paciente saludando a su psicóloga en una videollamada">
+    </div>
+  </section>
+
+  <section class="alt bleed">
+    <div class="split reverse">
+      <img class="photo" src="img/libreta-cafe.jpg" alt="Libreta con el símbolo de psicología junto a una taza de café">
+      <div>
+    <div class="head">
+      <p class="eyebrow">Cómo empezamos</p>
+      <h2>Tu primera cita, paso a paso</h2>
+    </div>
+    <ol class="steps">
+      <li><h3>Eliges un horario</h3><p>Reservas en la agenda de abajo o me escribes por WhatsApp. Respondo en menos de 24 horas.</p></li>
+      <li><h3>Primera sesión</h3><p>Hablamos de lo que te trae a terapia, resolvemos dudas y vemos si soy la persona adecuada para ti.</p></li>
+      <li><h3>Plan de trabajo</h3><p>Acordamos objetivos, frecuencia de las sesiones y la forma en que revisaremos tu avance.</p></li>
+    </ol>
+      </div>
+    </div>
+  </section>
+
+  <section id="agenda">
+    <div class="head">
+      <p class="eyebrow">Agenda</p>
+      <h2>Reserva tu primera sesión</h2>
+    </div>
+    <div class="booking">
+      <div>
+        <div class="week" id="week" aria-label="Horarios disponibles esta semana"></div>
+        <p class="week-note">Horario del centro de México. Los horarios tachados ya están ocupados.</p>
+      </div>
+      <form id="form" novalidate>
+        <div class="chosen" id="chosen">Elige un horario en el calendario.</div>
+        <div class="field"><label for="nombre">Nombre</label><input id="nombre" required autocomplete="name" placeholder="Tu nombre"></div>
+        <div class="field"><label for="tel">Teléfono o WhatsApp</label><input id="tel" required autocomplete="tel" placeholder="55 1234 5678"></div>
+        <div class="field">
+          <label for="modalidad">Modalidad</label>
+          <select id="modalidad"><option>Presencial</option><option>En línea</option></select>
+        </div>
+        <div class="field"><label for="motivo">¿Qué te gustaría trabajar? (opcional)</label><textarea id="motivo" placeholder="Puedes escribir solo unas palabras."></textarea></div>
+        <button class="btn" type="submit">Solicitar cita</button>
+        <div class="confirm" id="confirm" hidden></div>
+      </form>
+    </div>
+  </section>
+
+  <section id="preguntas" class="alt bleed">
+    <div class="head">
+      <p class="eyebrow">Preguntas frecuentes</p>
+      <h2>Lo que suelen preguntarme</h2>
+    </div>
+    <details><summary>¿Cuántas sesiones voy a necesitar?</summary><p>Depende del motivo de consulta. Muchos procesos de TCC duran entre 12 y 20 sesiones semanales. Lo revisamos juntos cada mes.</p></details>
+    <details><summary>¿Lo que hablo en terapia es confidencial?</summary><p>Sí. Todo lo que compartes está protegido por el secreto profesional, con las excepciones que marca la ley cuando hay riesgo para tu vida o la de otras personas.</p></details>
+    <details><summary>¿Qué pasa si necesito cancelar?</summary><p>Puedes cancelar o cambiar tu cita sin costo avisando con 24 horas de anticipación.</p></details>
+    <details><summary>¿Emites facturas?</summary><p>Sí, puedo emitir factura por cada sesión. Solo envíame tus datos fiscales después de la cita.</p></details>
+  </section>
+
+  <footer class="bleed">
+    <a class="logo" href="#inicio">Mariana Ríos<span>PSICOLOGÍA CLÍNICA</span></a>
+    <div class="crisis"><strong>¿Estás en crisis?</strong> Esta consulta no atiende emergencias. Si tu vida corre peligro, llama al 911 o a la Línea de la Vida: 800 911 2000.</div>
+    <div class="foot-row">
+      <span>Consultorio: Av. Ejemplo 123, Col. Roma Norte, CDMX</span>
+      <span>contacto@ejemplo.com · 55 0000 0000</span>
+    </div>
+    <span>© 2026 Mariana Ríos · Sitio de muestra</span>
+  </footer>
+</div>
+
+<script>
+(function () {
+  const days = ["Lun", "Mar", "Mié", "Jue", "Vie"];
+  const hours = ["09:00", "11:00", "13:00", "17:00", "19:00"];
+  const busy = new Set(["0-1", "1-0", "1-3", "2-2", "3-0", "3-4", "4-1", "4-2"]);
+  const start = new Date(); start.setDate(start.getDate() + ((8 - start.getDay()) % 7 || 7)); // próximo lunes
+  const week = document.getElementById("week");
+  const chosen = document.getElementById("chosen");
+  let selected = null;
+
+  const grid = document.createElement("div");
+  grid.className = "week-grid";
+  days.forEach((d, i) => {
+    const date = new Date(start); date.setDate(start.getDate() + i);
+    const col = document.createElement("div");
+    col.className = "day";
+    col.innerHTML = `<div class="day-name">${d}<small>${date.getDate()}/${date.getMonth() + 1}</small></div>`;
+    hours.forEach((h, j) => {
+      const b = document.createElement("button");
+      b.type = "button"; b.className = "slot"; b.textContent = h;
+      b.setAttribute("aria-pressed", "false");
+      if (busy.has(i + "-" + j)) b.disabled = true;
+      b.addEventListener("click", () => {
+        if (selected) selected.setAttribute("aria-pressed", "false");
+        selected = b; b.setAttribute("aria-pressed", "true");
+        chosen.textContent = `Horario elegido: ${d} ${date.getDate()}/${date.getMonth() + 1} a las ${h}`;
+      });
+      col.appendChild(b);
+    });
+    grid.appendChild(col);
+  });
+  week.appendChild(grid);
+
+  document.getElementById("form").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const out = document.getElementById("confirm");
+    const nombre = document.getElementById("nombre").value.trim();
+    const tel = document.getElementById("tel").value.trim();
+    out.hidden = false;
+    if (!selected) { out.textContent = "Elige primero un horario en el calendario."; return; }
+    if (!nombre || !tel) { out.textContent = "Escribe tu nombre y un teléfono para poder confirmarte la cita."; return; }
+    out.textContent = `Gracias, ${nombre}. En el sitio real, esta solicitud llegaría al correo o WhatsApp de la psicóloga para confirmarte la cita.`;
+  });
+})();
+</script>
+</body>
+</html>
