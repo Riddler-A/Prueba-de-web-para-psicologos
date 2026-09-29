@@ -76,6 +76,7 @@ footer .logo { color: var(--on-dark); }
 .navlinks { display: flex; gap: 1.6rem; flex-wrap: wrap; font-size: .93rem; }
 .navlinks a { color: var(--muted); text-decoration: none; }
 .navlinks a:hover { color: var(--terra); }
+.menu-btn { display: none; }
 
 .hero { display: grid; grid-template-columns: 1.25fr 1fr; gap: 3rem; align-items: center; padding-block: 3rem 5rem; }
 .hero > div { min-width: 0; display: grid; gap: 1.5rem; }
@@ -114,7 +115,7 @@ section.alt .service, section.alt .week { background: var(--bg); }
 
 .services { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
 .service { background: var(--surface); border-radius: 24px; padding: 1.8rem; border: 1px solid var(--line); display: grid; gap: .7rem; align-content: start; }
-.service .meta { font-size: .85rem; color: var(--muted); display: flex; gap: 1rem; flex-wrap: wrap; font-variant-numeric: tabular-nums; }
+.service .meta { font-size: .85rem; color: var(--muted); display: flex; gap: .6rem 1rem; flex-wrap: wrap; align-items: center; font-variant-numeric: tabular-nums; }
 .service .meta strong { color: var(--ink); font-weight: 600; }
 .chip { background: var(--terra-soft); color: var(--terra); border-radius: 999px; padding: .2rem .7rem; font-weight: 600; }
 
@@ -179,8 +180,36 @@ footer .logo { font-size: 1.3rem; }
   .hero { padding-block: 1.5rem 3rem; }
   .portrait { max-width: 340px; }
   .services, .steps { grid-template-columns: 1fr; }
-  .navlinks { display: none; }
   section { padding-block: 3.2rem; }
+
+  /* Menú móvil */
+  nav { row-gap: 0; gap: .5rem; flex-wrap: wrap; }
+  .logo { font-size: 1.35rem; }
+  .logo span { font-size: .66rem; letter-spacing: .12em; }
+  nav .btn.gold { margin-left: auto; padding: .6rem 1.1rem; font-size: .88rem; }
+  .menu-btn {
+    display: inline-grid; place-items: center; width: 44px; height: 44px; flex: none; cursor: pointer;
+    border-radius: 50%; border: 1px solid var(--line); background: transparent; color: var(--ink);
+  }
+  .menu-btn svg { width: 20px; height: 20px; }
+  .navlinks { display: none; order: 3; flex-basis: 100%; flex-direction: column; gap: 0; padding-top: .8rem; }
+  .navlinks.open { display: flex; }
+  .navlinks a { padding-block: .85rem; border-top: 1px solid var(--line); font-size: 1rem; color: var(--ink); }
+
+  /* Portada */
+  h1 { font-size: 2.35rem; }
+  .hero .actions .btn { flex: 1 1 100%; justify-content: center; }
+  .portrait { max-width: 100%; aspect-ratio: 1 / 1.05; }
+  .portrait img { object-position: center 22%; }
+
+  /* Ritmo y lectura */
+  .head { margin-bottom: 1.8rem; }
+  .service { padding: 1.4rem; border-radius: 20px; }
+  .cta-row .btn { flex: 1 1 auto; justify-content: center; }
+  .demo-banner { font-size: .74rem; }
+  .lede, .about p, .split p, .steps p, details p {
+    text-align: justify; hyphens: auto; -webkit-hyphens: auto;
+  }
 }
 /* Base */
 body { margin: 0; }
@@ -195,13 +224,17 @@ img { max-width: 100%; }
   <div class="dark-band bleed">
   <nav>
     <a class="logo" href="#inicio">Mariana Ríos<span>PSICOLOGÍA CLÍNICA</span></a>
-    <div class="navlinks">
+    <div class="navlinks" id="navlinks">
       <a href="#sobre-mi">Sobre mí</a>
       <a href="#servicios">Servicios</a>
+      <a href="#en-linea">En línea</a>
       <a href="#agenda">Agenda</a>
       <a href="#preguntas">Preguntas</a>
     </div>
     <a class="btn gold" href="#agenda">Agendar cita</a>
+    <button class="menu-btn" id="menu-btn" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="navlinks">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
   </nav>
 
   <header class="hero" id="inicio">
@@ -356,6 +389,18 @@ img { max-width: 100%; }
 </div>
 
 <script>
+(function () {
+  const btn = document.getElementById("menu-btn");
+  const links = document.getElementById("navlinks");
+  btn.addEventListener("click", () => {
+    const open = links.classList.toggle("open");
+    btn.setAttribute("aria-expanded", open);
+    btn.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
+  });
+  links.addEventListener("click", (e) => {
+    if (e.target.closest("a")) { links.classList.remove("open"); btn.setAttribute("aria-expanded", "false"); }
+  });
+})();
 (function () {
   const days = ["Lun", "Mar", "Mié", "Jue", "Vie"];
   const hours = ["09:00", "11:00", "13:00", "17:00", "19:00"];
