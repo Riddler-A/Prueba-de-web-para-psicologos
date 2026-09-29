@@ -1,6 +1,6 @@
 # Sitio de muestra: Psicóloga Mariana Ríos
 
-Página de ejemplo hecha por **Primsa** para mostrar a psicólogos cómo puede verse su sitio web.
+Página de ejemplo hecha por **PRISMA CN** para mostrar a psicólogos cómo puede verse su sitio web.
 El nombre, los datos, precios y horarios son ficticios.
 
 ## Archivos

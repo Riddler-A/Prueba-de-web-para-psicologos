@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Psicóloga clínica en CDMX. Terapia individual, de pareja, duelo, adolescentes y en línea. Sitio de muestra de Primsa.">
+<meta name="description" content="Psicóloga clínica en CDMX. Terapia individual, de pareja, duelo, adolescentes y en línea. Sitio de muestra de PRISMA CN.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%278%27 fill=%27%23FAF8F4%27/%3E%3Ctext x=%2716%27 y=%2724%27 font-size=%2722%27 text-anchor=%27middle%27 font-family=%27Georgia%27 fill=%27%23A85C32%27%3E%CE%A8%3C/text%3E%3C/svg%3E">
 <title>Consultorio Mariana Ríos</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Inter:wght@400;500;600&display=swap">
 <style>
-/* Layout (marca Primsa): hero y footer en banda oscura a todo lo ancho; secciones en blanco hueso alternando con gris cálido */
+/* Layout (marca PRISMA CN): hero y footer en banda oscura a todo lo ancho; secciones en blanco hueso alternando con gris cálido */
 :root {
   --bg: #FAF8F4;          /* blanco hueso */
   --surface: #F2F0EA;     /* gris 3: tarjetas y secciones alternas */
@@ -171,6 +171,10 @@ footer .logo { font-size: 1.3rem; }
 .crisis { border: 1px solid color-mix(in srgb, var(--gold) 45%, transparent); border-radius: 18px; padding: 1rem 1.2rem; color: var(--on-dark); }
 .crisis strong { color: var(--gold); }
 .foot-row { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.foot-bottom { align-items: center; padding-top: 1.5rem; border-top: 1px solid color-mix(in srgb, var(--on-dark) 14%, transparent); }
+.credit { display: inline-flex; align-items: center; gap: .6rem; color: var(--on-dark); }
+.credit strong { font-weight: 600; letter-spacing: .08em; }
+.prisma-logo { width: 30px; height: 30px; color: var(--gold); flex: none; }
 
 @media (max-width: 800px) {
   .hero, .about, .booking, .split { grid-template-columns: 1fr; gap: 2rem; }
@@ -384,7 +388,10 @@ img { max-width: 100%; }
       <span>Consultorio: Av. Ejemplo 123, Col. Roma Norte, CDMX</span>
       <span>contacto@ejemplo.com · 55 0000 0000</span>
     </div>
-    <span>© 2026 Mariana Ríos · Sitio de muestra</span>
+    <div class="foot-row foot-bottom">
+      <span>© 2026 Mariana Ríos · Sitio de muestra</span>
+      <span class="credit"><svg class="prisma-logo" viewBox="320 295 1265 1340" aria-hidden="true" fill="currentColor"><polygon points="933,308 739,1233 332,1581 333,1573"/><polygon points="977,430 1158,1217 811,1217"/><polygon points="1020,317 1571,1217 1228,1217"/><polygon points="782,1285 1174,1285 1251,1620 388,1622"/><polygon points="1243,1285 1565,1285 1309,1570"/></svg><span>Sitio diseñado por <strong>PRISMA CN</strong></span></span>
+    </div>
   </footer>
 </div>
 
